@@ -9,7 +9,7 @@ class Program
         try
         {
             // Parse CLI arguments
-            var inputArg = args.FirstOrDefault(a => a.StartsWith("--input="));
+            /*var inputArg = args.FirstOrDefault(a => a.StartsWith("--input="));
             if (inputArg == null)
             {
                 Console.WriteLine("Usage: program --input=HEXSTRING");
@@ -21,8 +21,8 @@ class Program
             if (string.IsNullOrWhiteSpace(hexInput))
                 throw new Exception("Empty input cannot be decompressed.");
 
-            // Convert input to byte array
-            var bytes = InputToBytes(hexInput);
+            // Convert input to byte array*/
+            var bytes = InputToBytes("5a e5 ba 93 11 d8 85 f7 c9 cf 2d 48 55 70 29 2a cd 4c 61 98 c7 c8 ce 0e 0c dd c4 5c 00 00");
             // Initialize zlib stream
             var zStream = new ZStream();
             zStream.inflateInit(-15);
@@ -89,6 +89,6 @@ class Program
         // Slice only the valid bytes
         var resultBytes = decompressedBytes.Take(decompressedLength).ToArray();
         
-        return BitConverter.ToString(resultBytes).Replace("-", " ");
+        return string.Join(" ", resultBytes.Select(b => b.ToString("X2")));
     }
 }
