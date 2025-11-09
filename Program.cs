@@ -33,7 +33,7 @@ class Program
             zStream.deflateEnd();
 
             // Print decompressed result
-            Console.WriteLine($"Result: {decompressedHex}");
+            Console.WriteLine(decompressedHex);
         }
         catch (Exception e)
         {
