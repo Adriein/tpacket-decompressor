@@ -13,7 +13,7 @@ class Program
             // Parse CLI arguments
             var inputArg = args.FirstOrDefault(arg => arg.StartsWith("--input="));
 
-            /*if (inputArg == null)
+            if (inputArg == null)
             {
                 Console.WriteLine("Usage: program --input=HEXSTRING");
                 return;
@@ -24,8 +24,8 @@ class Program
             if (string.IsNullOrWhiteSpace(hexInput))
                 throw new Exception("Empty input cannot be decompressed.");
 
-            // Convert input to byte array*/
-            var bytes = InputToBytes("5a e5 ba 93 11 d8 85 f7 c9 cf 2d 48 55 70 29 2a cd 4c 61 98 c7 c8 ce 0e 0c dd c4 5c 00 00");
+            // Convert input to byte array
+            var bytes = InputToBytes(hexInput);
 
             // Decompress
             var decompressedHex = DecompressBytes(bytes);
